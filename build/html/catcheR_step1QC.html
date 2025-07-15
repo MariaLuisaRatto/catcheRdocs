@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>catcheR_step1QC - Pooled Cloning Step 1 QC &#8212; catcheR 2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=60dbed4a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="catcheR_10Xcatch" href="catcheR_10Xcatch.html" />
+    <link rel="prev" title="catcheR_design - Oligonucleotide Design" href="catcheR_design.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="catcher-step1qc-pooled-cloning-step-1-qc">
+<h1>catcheR_step1QC - Pooled Cloning Step 1 QC<a class="headerlink" href="#catcher-step1qc-pooled-cloning-step-1-qc" title="Link to this heading">¶</a></h1>
+<p>This step complements <span class="xref std std-ref">SupplementalProtocolOne</span> - <span class="xref std std-ref">SPOneFourA</span>.</p>
+<ol class="arabic">
+<li><p>In a new working folder, prepare the following files:</p>
+<ol class="loweralpha simple">
+<li><p>Fastq/fq or fastq.gz files with demultiplexed read 1 from the NGS run.</p></li>
+<li><p>A CSV file with the shRNA names and their full sequences:</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SMAD2.1,GCAAGTACTCCTTGCTGGATTGCTCGAGCAATCCAGCAAGGAGTACTTG
+...
+</pre></div>
+</div>
+<ol class="loweralpha simple" start="3">
+<li><p><em>(Optional)</em> A <cite>.txt</cite> file with a newline-separated list of clones of interest in the format <cite>BC_UCI</cite> (e.g., from a subsequent iPS2seq-edited-hPSC experiment). Each clone is identified by its shRNA barcode and UCI separated by an underscore:</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CAAGAGCC_CATCGT
+...
+</pre></div>
+</div>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">catcheR_step1QC</span></code>:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">catcheR_step1QC</span><span class="p">(</span>
+<span class="w">    </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;docker&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sudo&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">folder</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fastq.read1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">DIs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ratio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span>
+<span class="w">    </span><span class="n">plot.threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2000</span><span class="p">,</span>
+<span class="w">    </span><span class="n">clones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>`catcheR_step1QC` arguments:</strong></p>
+<ol class="loweralpha simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">group</span></code>: string, either <cite>“sudo”</cite> or <cite>“docker”</cite> depending on your user group.
+<em>(For Docker group setup, see:</em> <a class="reference external" href="https://docs.docker.com/engine/install/linux-postinstall/">https://docs.docker.com/engine/install/linux-postinstall/</a> <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">folder</span></code>: string with the path to the working directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fastq.read1</span></code>: string with the filename from step 1a.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DIs</span></code>: integer, minimum number of diversity indexes (DIs, pseudo-unique reads) for the most represented shRNA matched to a given UCI-BC.
+Used with <code class="docutils literal notranslate"><span class="pre">ratio</span></code> to select reliable UCI-BC/shRNA associations. <em>(Default = 100)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ratio</span></code>: integer, the minimum ratio between the DIs of the most represented and second most represented shRNAs.
+Used with <code class="docutils literal notranslate"><span class="pre">DIs</span></code> to confirm assignment. <em>(Default = 10)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot.threshold</span></code>: integer, minimum number of DIs per UCI-BC to be included in bar plots.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clones</span></code>: <em>(optional)</em> string with the <cite>.txt</cite> file name from step 1c.</p></li>
+</ol>
+<p><strong>Example usage:</strong></p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">catcheR_step1QC</span><span class="p">(</span>
+<span class="w">    </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;docker&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;path/to/folder&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fastq.read1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;filename.fq&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">clones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;filename.txt&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>`catcheR_step1QC` key outputs:</strong></p>
+<ol class="loweralpha simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">reliable_clones_swaps.csv</span></code> — lists UCI-BCs with strong evidence of shRNA-barcode swap.
+Can be used as input for <span class="xref std std-ref">SPFourEight</span>.</p></li>
+<li><p>Bar chart showing the number of DIs for each clone above the <code class="docutils literal notranslate"><span class="pre">plot.threshold</span></code>.</p></li>
+<li><p>Bar charts showing the number of DIs associated with each barcode, shRNA, and reliable swap.</p></li>
+<li><p><em>(If the ``clones`` argument is provided)</em>
+CSV files and bar charts showing the number of DIs for each shRNA matched to each clone of interest
+(see <span class="xref std std-ref">FigureSPFourTwo</span>).</p></li>
+</ol>
+</li>
+</ol>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">catcheR</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_design.html">catcheR_design - Oligonucleotide Design</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">catcheR_step1QC - Pooled Cloning Step 1 QC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_10Xcatch.html">catcheR_10Xcatch</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="catcheR_design.html" title="previous chapter">catcheR_design - Oligonucleotide Design</a></li>
+      <li>Next: <a href="catcheR_10Xcatch.html" title="next chapter">catcheR_10Xcatch</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Maria Luisa Ratto.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/catcheR_step1QC.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

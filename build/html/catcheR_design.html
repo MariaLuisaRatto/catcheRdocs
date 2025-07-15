@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>catcheR_design - Oligonucleotide Design &#8212; catcheR 2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=60dbed4a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="catcheR_step1QC - Pooled Cloning Step 1 QC" href="catcheR_step1QC.html" />
+    <link rel="prev" title="Getting started" href="gettingstarted.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="catcher-design-oligonucleotide-design">
+<h1>catcheR_design - Oligonucleotide Design<a class="headerlink" href="#catcher-design-oligonucleotide-design" title="Link to this heading">¶</a></h1>
+<p>This step complements <span class="xref std std-ref">SupplementalProtocolOne</span> - <span class="xref std std-ref">SPOneOne</span>.</p>
+<ol class="arabic">
+<li><p>In a new working folder, prepare the following files:</p>
+<ol class="loweralpha">
+<li><p>A comma-separated values (CSV) file with three columns listing:
+(1) the forward oligos from the TRC shRNA library
+(2) the corresponding barcodes (BC)
+(3) the shRNA names</p>
+<p>Below is an example for the shRNA described in <span class="xref std std-ref">FigureSPOneOne</span>:</p>
+</li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CCGGCAAGTACTCCTTGCTGGATTGCTCGAGCAATCCAGCAAGGAGTACTTGTTTTTG,CAGTTCCA,SMAD2.1
+...
+</pre></div>
+</div>
+<ol class="loweralpha simple" start="2">
+<li><p><em>(Optional)</em> A <cite>.txt</cite> file with a newline-separated list of 5’-3’ restriction sites, or other sequences to be avoided in the shRNAs.
+By default these are SalI, SwaI, and AscI:</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GTCGAC
+ATTTAAAT
+GGCGCGCC
+</pre></div>
+</div>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">catcheR_design</span></code>:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">catcheR_design</span><span class="p">(</span>
+<span class="w">    </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;docker&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sudo&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">folder</span><span class="p">,</span>
+<span class="w">    </span><span class="n">sequences</span><span class="p">,</span>
+<span class="w">    </span><span class="n">gibson.five</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;AGTTCCCTATCAGTGATAGAGATCCC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">gibson.three</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GTAGCTCGCTGATCAGC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GTCGACATTTAAATGGCGCGCC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">restriction.sites</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>`catcheR_design` arguments:</strong></p>
+<ol class="loweralpha simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">group</span></code>: string, one of <cite>“docker”</cite> or <cite>“sudo”</cite> depending on user permissions
+<em>(For a detailed explanation of Docker user groups, see:</em> <a class="reference external" href="https://docs.docker.com/engine/install/linux-postinstall/">https://docs.docker.com/engine/install/linux-postinstall/</a> <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">folder</span></code>: string with the path to the working folder</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sequences</span></code>: string with the CSV file name from step 1a</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gibson.five</span></code>: <em>(optional)</em> string with the 5’ Gibson homology sequence</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gibson.three</span></code>: <em>(optional)</em> string with the 3’ Gibson homology sequence</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fixed</span></code>: <em>(optional)</em> string with the multicloning site</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">restriction.sites</span></code>: <em>(optional)</em> string with the <cite>.txt</cite> file name from step 1b</p></li>
+</ol>
+<p><strong>Example usage:</strong></p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">catcheR_design</span><span class="p">(</span>
+<span class="w">    </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;docker&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;path/to/folder&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">sequences</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;filename.csv&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">restriction.sites</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;filename.txt&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>`catcheR_design` outputs:</strong></p>
+<ol class="loweralpha simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">output.txt</span></code> – contains the oligo sequences to be used for synthesis
+(see <span class="xref std std-ref">FigureSPOneOne</span>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bad_oligos.txt</span></code> – lists the shRNAs containing forbidden restriction sites
+(highlighted in lowercase characters). This can be used to refine the shRNA list.</p></li>
+</ol>
+<p>Example output from <code class="docutils literal notranslate"><span class="pre">bad_oligos.txt</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>AGTTCCCTATCAGTGATAGAGATCCCGGACATAATCACTGCGTAATCCTCagatctTACGCAGTGATTATGTCCTTTTTTTGT-
+CGACATTTAAATGGCGCGCCNNNNNNGCTGAAGAGTAGCTCGCTGATCAGC,GATA4
+...
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">catcheR</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">catcheR_design - Oligonucleotide Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_step1QC.html">catcheR_step1QC - Pooled Cloning Step 1 QC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_10Xcatch.html">catcheR_10Xcatch</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="gettingstarted.html" title="previous chapter">Getting started</a></li>
+      <li>Next: <a href="catcheR_step1QC.html" title="next chapter">catcheR_step1QC - Pooled Cloning Step 1 QC</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Maria Luisa Ratto.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/catcheR_design.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

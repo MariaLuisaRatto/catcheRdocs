@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>catcheR_10XcatchQC - Fine-Tune iPS2-10X-seq Perturbation Assignment &#8212; catcheR 2.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=60dbed4a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="catcheR_filtercatch - Fine-Tune iPS2-10X-seq Perturbation Assignment" href="catcheR_filtercatch.html" />
+    <link rel="prev" title="catcheR_10Xcatch - iPS2-10X-seq Perturbation Deconvolution" href="catcheR_10Xcatch.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="catcher-10xcatchqc-fine-tune-ips2-10x-seq-perturbation-assignment">
+<h1>catcheR_10XcatchQC - Fine-Tune iPS2-10X-seq Perturbation Assignment<a class="headerlink" href="#catcher-10xcatchqc-fine-tune-ips2-10x-seq-perturbation-assignment" title="Link to this heading">¶</a></h1>
+<p id="spfourparthree">Optionally, uou can refine shRNA assignment thresholds without re-running the full <code class="docutils literal notranslate"><span class="pre">catcheR_10Xcatch</span></code> analysis using:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">catcheR_10XcatchQC</span></code>: regenerate QC plots with alternative thresholds or thresholding mode (e.g. switch from <code class="docutils literal notranslate"><span class="pre">bimodal</span></code> to <code class="docutils literal notranslate"><span class="pre">noise</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">catcheR_filtercatch</span></code>: re-apply filters using chosen thresholds</p></li>
+</ul>
+<p>These tools only rerun the second half of the pipeline, saving time and computing resources.</p>
+<section id="step-by-step">
+<h2>Step-by-step<a class="headerlink" href="#step-by-step" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>In the same working folder used previously with <code class="docutils literal notranslate"><span class="pre">catcheR_10Xcatch</span></code>, run <code class="docutils literal notranslate"><span class="pre">catcheR_10XcatchQC</span></code>.
+This will regenerate QC plots (see <span class="xref std std-ref">FigureSPFourFour</span>) and suggest new thresholds.</p></li>
+</ol>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">catcheR_10XcatchQC</span><span class="p">(</span>
+<span class="w">    </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;docker&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sudo&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;path/to/working/folder&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">reference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GGCGCGTTCATCTGGGGGAGCCG&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;bimodal&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">400</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Arguments</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">group</span></code>: <cite>“docker”</cite> or <cite>“sudo”</cite> depending on your system permissions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">folder</span></code>: working directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reference</span></code>: reverse complement of constant region before the UCI (default: <code class="docutils literal notranslate"><span class="pre">GGCGCGTTCATCTGGGGGAGCCG</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code>: thresholding strategy, either:
+- <code class="docutils literal notranslate"><span class="pre">&quot;bimodal&quot;</span></code>: uses the valley in the UMIxUCI distribution (default)
+- <code class="docutils literal notranslate"><span class="pre">&quot;noise&quot;</span></code>: 1.35 × number of UCIs with 1 UMI</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sample</span></code>: sample number (default = 1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> / <code class="docutils literal notranslate"><span class="pre">y</span></code>: crop limits for the x and y axes of UMIxUCI plots (defaults: 100, 400)</p></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">catcheR_10XcatchQC</span><span class="p">(</span>
+<span class="w">    </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;docker&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;path/to/working/folder&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;noise&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function should be run once per sample (<code class="docutils literal notranslate"><span class="pre">sample</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">sample</span> <span class="pre">=</span> <span class="pre">2</span></code>, etc.)</p>
+</div>
+<p>The arguments and outputs are identical to those in <code class="docutils literal notranslate"><span class="pre">catcheR_10Xcatch</span></code>, but this step focuses only on quality control plot generation and threshold estimation.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">catcheR</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_design.html">catcheR_design - Oligonucleotide Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_step1QC.html">catcheR_step1QC - Pooled Cloning Step 1 QC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_step2QC.html">catcheR_step2QC - Pooled Cloning Step 2 and hiPSC Genome Editing QC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_scicounts.html">catcheR_scicounts - Obtain iPS2-sci-seq Count Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_10Xcatch.html">catcheR_10Xcatch - iPS2-10X-seq Perturbation Deconvolution</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">catcheR_10XcatchQC - Fine-Tune iPS2-10X-seq Perturbation Assignment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-by-step">Step-by-step</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_filtercatch.html">catcheR_filtercatch - Fine-Tune iPS2-10X-seq Perturbation Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_10Xnocatch.html">catcheR_10Xnocatch - Identify cells expressing no shRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_merge.html">catcheR_merge - Merge multiple samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_scicatch.html">caycheR_scicatch - iPS2-sci-seq perturbation deconvolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_scicatchQC.html">catcheR_scicatchQC - Fine-tune iPS2-sci-seq perturbation assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_scinocatch.html">catcheR_scinocatch - Identify cells expressing no shRNA in iPS2-sci-seq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_sortcatch.html">catcheR_sortcatch - Barcode reassignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_load.html">catcheR_load - Data loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_pseudotime.html">catcheR_pseudotime - Pseudotime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_modules.html">catcheR_modules - Gene Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_enrichment.html">catcheR_enrichment - Enrichment / Depletion Analysis</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="catcheR_10Xcatch.html" title="previous chapter">catcheR_10Xcatch - iPS2-10X-seq Perturbation Deconvolution</a></li>
+      <li>Next: <a href="catcheR_filtercatch.html" title="next chapter">catcheR_filtercatch - Fine-Tune iPS2-10X-seq Perturbation Assignment</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Maria Luisa Ratto.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/catcheR_10XcatchQC.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
