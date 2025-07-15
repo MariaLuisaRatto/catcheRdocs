@@ -14,7 +14,7 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="catcheR_10Xcatch - Fine-Tune iPS2-10X-seq Perturbation Assignment" href="catcheR_10XcatchQC.html" />
+    <link rel="next" title="catcheR_10XcatchQC - Fine-Tune iPS2-10X-seq Perturbation Assignment" href="catcheR_10XcatchQC.html" />
     <link rel="prev" title="catcheR_scicounts - Obtain iPS2-sci-seq Count Matrices" href="catcheR_scicounts.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -62,10 +62,8 @@ You can install it manually or use Docker containers from:
 <ol class="arabic">
 <li><p>In a new working folder:</p>
 <ol class="loweralpha simple">
-<li><p>Copy demultiplexed Read 1 and Read 2 files of the UCI-BC library
-(see <span class="xref std std-ref">SPFourParOne</span>)</p></li>
-<li><p>Copy the gene expression count matrix CSV
-(see <span class="xref std std-ref">SPFourParOne</span>)</p></li>
+<li><p>Copy demultiplexed Read 1 and Read 2 files of the UCI-BC library</p></li>
+<li><p>Copy the gene expression count matrix CSV</p></li>
 <li><p>Create a CSV file named <code class="docutils literal notranslate"><span class="pre">rc_barcodes_genes.csv</span></code> with:</p></li>
 </ol>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CAAGAGCC,SMAD2.1
@@ -124,17 +122,21 @@ You can install it manually or use Docker containers from:
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">log.txt</span></code>: number of reads processed</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">log2.txt</span></code>: number of cells, UCIs, UMIs, threshold values (bimodal &amp; noise)</p></li>
-<li><p>Barplots of UMI counts per shRNA and per gene
-(see <span class="xref std std-ref">FigureSPFourFourA</span> and <span class="xref std std-ref">FigureSPFourFourB</span>)</p></li>
-<li><p>Histogram: UMI counts per UCI (UMIxUCI)
-(see <span class="xref std std-ref">FigureSPFourFourC</span>)</p></li>
-<li><p>Histogram: UCI UMI percentage in cell (UMIpercentagexUCI)
-(see <span class="xref std std-ref">FigureSPFourFourD</span>)</p></li>
+<li><p>Barplots of UMI counts per shRNA and per gene</p>
+<img alt="_images/barcode_distribution.pdf" src="_images/barcode_distribution.pdf" />
+<img alt="_images/gene_distribution.pdf" src="_images/gene_distribution.pdf" />
+</li>
+<li><p>Histogram: UMI counts per UCI (UMIxUCI)</p>
+<img alt="_images/UMIxUCI.pdf" src="_images/UMIxUCI.pdf" />
+<img alt="_images/UMIxUCI_400_400.pdf" src="_images/UMIxUCI_400_400.pdf" />
+</li>
+<li><p>Histogram: UCI UMI percentage in cell (UMIpercentagexUCI)</p>
+<img alt="_images/percentage_of_UMIxUCI_dist.pdf" src="_images/percentage_of_UMIxUCI_dist.pdf" />
+</li>
 <li><p>2D dot plots:
 - UMI vs UMI% per UCI, colored by valid integration count or status</p>
-<blockquote>
-<div><p>(see <span class="xref std std-ref">FigureSPFourFourE</span> and <span class="xref std std-ref">FigureSPFourFourF</span>)</p>
-</div></blockquote>
+<img alt="_images/2D_percentage_of_UMIxUCI_UMI_count_trueorfalse.pdf" src="_images/2D_percentage_of_UMIxUCI_UMI_count_trueorfalse.pdf" />
+<img alt="_images/2D_percentage_of_UMIxUCI_UMI_count_ValidCells.pdf" src="_images/2D_percentage_of_UMIxUCI_UMI_count_ValidCells.pdf" />
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">log_part3.txt</span></code>: number of single-integration vs filtered cells</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">silencing_matrix.csv</span></code>: annotated expression matrix with shRNA assignment
@@ -153,9 +155,7 @@ You can install it manually or use Docker containers from:
 - <code class="docutils literal notranslate"><span class="pre">CGTGATGC</span></code> = shRNA barcode (BC)
 - <code class="docutils literal notranslate"><span class="pre">NKX2.5</span></code> = target gene
 - <code class="docutils literal notranslate"><span class="pre">ACAGTG</span></code> = UCI</p>
-<p>You can use this matrix directly with downstream analysis functions (see <span class="xref std std-ref">SPFourNine</span>)
-or explore additional scripts in our <a class="reference external" href="https://github.com/alessandro-bertero/catcheR/tree/dev/single_cell_analysis">GitHub repository</a>.
-=======</p>
+<p>You can use this matrix directly with downstream analysis functions.</p>
 </section>
 </section>
 
@@ -196,9 +196,18 @@ or explore additional scripts in our <a class="reference external" href="https:/
 <li class="toctree-l2"><a class="reference internal" href="#step-by-step">Step-by-step</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="catcheR_10XcatchQC.html">catcheR_10Xcatch - Fine-Tune iPS2-10X-seq Perturbation Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_10XcatchQC.html">catcheR_10XcatchQC - Fine-Tune iPS2-10X-seq Perturbation Assignment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="catcheR_filtercatch.html">catcheR_filtercatch - Fine-Tune iPS2-10X-seq Perturbation Assignment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="catcheR_10Xnocatch.html">catcheR_10Xnocatch - Identify cells expressing no shRNA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_merge.html">catcheR_merge - Merge multiple samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_scicatch.html">caycheR_scicatch - iPS2-sci-seq perturbation deconvolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_scicatchQC.html">catcheR_scicatchQC - Fine-tune iPS2-sci-seq perturbation assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_scinocatch.html">catcheR_scinocatch - Identify cells expressing no shRNA in iPS2-sci-seq</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_sortcatch.html">catcheR_sortcatch - Barcode reassignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_load.html">catcheR_load - Data loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_pseudotime.html">catcheR_pseudotime - Pseudotime</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_modules.html">catcheR_modules - Gene Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catcheR_enrichment.html">catcheR_enrichment - Enrichment / Depletion Analysis</a></li>
 </ul>
 
 <div class="relations">
@@ -206,7 +215,7 @@ or explore additional scripts in our <a class="reference external" href="https:/
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="catcheR_scicounts.html" title="previous chapter">catcheR_scicounts - Obtain iPS2-sci-seq Count Matrices</a></li>
-      <li>Next: <a href="catcheR_10XcatchQC.html" title="next chapter">catcheR_10Xcatch - Fine-Tune iPS2-10X-seq Perturbation Assignment</a></li>
+      <li>Next: <a href="catcheR_10XcatchQC.html" title="next chapter">catcheR_10XcatchQC - Fine-Tune iPS2-10X-seq Perturbation Assignment</a></li>
   </ul></li>
 </ul>
 </div>

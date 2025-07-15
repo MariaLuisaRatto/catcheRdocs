@@ -32,10 +32,8 @@ Step-by-step
 1. In a new working folder:
 
    a. Copy demultiplexed Read 1 and Read 2 files of the UCI-BC library  
-      (see :ref:`SPFourParOne <par:SPFourParOne>`)
 
    b. Copy the gene expression count matrix CSV  
-      (see :ref:`SPFourParOne <par:SPFourParOne>`)
 
    c. Create a CSV file named ``rc_barcodes_genes.csv`` with:
 
@@ -99,14 +97,25 @@ Step-by-step
 - ``log.txt``: number of reads processed
 - ``log2.txt``: number of cells, UCIs, UMIs, threshold values (bimodal & noise)
 - Barplots of UMI counts per shRNA and per gene  
-  (see :ref:`FigureSPFourFourA` and :ref:`FigureSPFourFourB`)
+  
+  .. image:: barcode_distribution.pdf
+  .. image:: gene_distribution.pdf
+
 - Histogram: UMI counts per UCI (UMIxUCI)  
-  (see :ref:`FigureSPFourFourC`)
+  
+  .. image:: UMIxUCI.pdf
+  .. image:: UMIxUCI_400_400.pdf
+  
 - Histogram: UCI UMI percentage in cell (UMIpercentagexUCI)  
-  (see :ref:`FigureSPFourFourD`)
+  
+  .. image:: percentage_of_UMIxUCI_dist.pdf
+  
 - 2D dot plots:
   - UMI vs UMI% per UCI, colored by valid integration count or status  
-    (see :ref:`FigureSPFourFourE` and :ref:`FigureSPFourFourF`)
+    
+  .. image:: 2D_percentage_of_UMIxUCI_UMI_count_trueorfalse.pdf
+  .. image:: 2D_percentage_of_UMIxUCI_UMI_count_ValidCells.pdf
+    
 - ``log_part3.txt``: number of single-integration vs filtered cells
 - ``silencing_matrix.csv``: annotated expression matrix with shRNA assignment  
   (also in RDS format)
@@ -124,6 +133,4 @@ Where:
 - ``NKX2.5`` = target gene
 - ``ACAGTG`` = UCI
 
-You can use this matrix directly with downstream analysis functions (see :ref:`SPFourNine`)  
-or explore additional scripts in our `GitHub repository <https://github.com/alessandro-bertero/catcheR/tree/dev/single_cell_analysis>`_.
-=======
+You can use this matrix directly with downstream analysis functions.

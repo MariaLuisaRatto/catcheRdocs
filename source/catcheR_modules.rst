@@ -42,6 +42,9 @@ Outputs
 #. Heatmap plots  
    - Show Z-scores of module expression across perturbation groups.  
    - Includes either **all modules** or the **top 10 most variable modules**.
+   
+   ..image:: pheatmap_gene_module_top10.pdf
+   ..image:: pheatmap_shRNA_module_top10.pdf
 
 #. ``modules_cells/`` folder  
    - Contains tables with **aggregated expression values per cell** for each gene module.  
@@ -50,4 +53,4 @@ Outputs
 Integration with Pseudotime
 ---------------------------
 
-To analyze cumulative module expression trends, you can run ``catcheR_pseudotime`` using the CSV files in the ``modules_cells`` folder as pseudotime input, as shown in the :ref:`pseudotimeex` example.
+To analyze cumulative module expression trends, you can run ``catcheR_pseudotime`` using the CSV files in the ``modules_cells`` folder as pseudotime input.
