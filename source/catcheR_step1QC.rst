@@ -1,7 +1,7 @@
 catcheR_step1QC - Pooled Cloning Step 1 QC
 =========================
 
-This step complements :ref:`SupplementalProtocolOne` - :ref:`SPOneFourA`.
+This step complements SupplementalProtocolOne.
 
 1. In a new working folder, prepare the following files:
 

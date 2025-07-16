@@ -99,11 +99,13 @@ Step-by-step
 - Barplots of UMI counts per shRNA and per gene  
   
   .. image:: barcode_distribution.pdf
+  
   .. image:: gene_distribution.pdf
 
 - Histogram: UMI counts per UCI (UMIxUCI)  
   
   .. image:: UMIxUCI.pdf
+  
   .. image:: UMIxUCI_400_400.pdf
   
 - Histogram: UCI UMI percentage in cell (UMIpercentagexUCI)  
@@ -114,6 +116,7 @@ Step-by-step
   - UMI vs UMI% per UCI, colored by valid integration count or status  
     
   .. image:: 2D_percentage_of_UMIxUCI_UMI_count_trueorfalse.pdf
+  
   .. image:: 2D_percentage_of_UMIxUCI_UMI_count_ValidCells.pdf
     
 - ``log_part3.txt``: number of single-integration vs filtered cells

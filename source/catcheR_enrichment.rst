@@ -67,6 +67,7 @@ Outputs
    - Distribution of perturbation groups **across Monocle clusters**
    
    ..image:: clusters_in_genes_TETvsnoTET.pdf
+   
    ..image:: clusters_in_shRNAs_TETvsnoTET.pdf
 
 #. **Volcano plot (cluster enrichment)**:  
@@ -74,6 +75,7 @@ Outputs
    - Displays ``-log10(adjusted p-value)`` versus ``log2(fold change)`` compared to control
    
    ..image:: gene_volcano_fisher_stats_TETvsnoTET.pdf
+   
    ..image:: shRNA_volcano_fisher_stats_TETvsnoTET.pdf
 
 #. **Statistics table**:  

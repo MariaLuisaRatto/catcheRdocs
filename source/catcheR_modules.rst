@@ -44,6 +44,7 @@ Outputs
    - Includes either **all modules** or the **top 10 most variable modules**.
    
    ..image:: pheatmap_gene_module_top10.pdf
+   
    ..image:: pheatmap_shRNA_module_top10.pdf
 
 #. ``modules_cells/`` folder  
