@@ -3,7 +3,7 @@ Getting started
 
 **catcheR** is a comprehensive bioinformatic package for designing and analyzing iPS2-seq experiments.
 
-Find the tool at <https://github.com/alessandro-bertero/catcheR/tree/dev> and the preprint at <http://dx.doi.org/10.2139/ssrn.4854180>
+Find the tool at https://github.com/alessandro-bertero/catcheR/tree/dev and the preprint at http://dx.doi.org/10.2139/ssrn.4854180
 
 It comprises the following functions:
 
@@ -62,6 +62,9 @@ It comprises the following functions:
 14. **`catcheR_enrichment`**  
     
     Quantifies differences in perturbation representation across experimental samples or cell clusters.
+    
+
+For the minimal catcheR analysis of a 10X experiment, run ``catcheR_10Xcatch`` to anntate the gene expression matrix with perturbations and then ``catcheR_load`` to start the exploratory analysis. 
 
 
 Availability and Installation
@@ -101,6 +104,8 @@ The GitHub repository folder **scripts** contains all the bash and R scripts tha
       
 Notes on obtaining iPS2-10X-seq, iPS2-CITE-seq, or iPS2-multi-seq Count Matrices
 -----------------------------------------------------------------------
+
+If starting from raw data, gene expression matrix need to be generated. 
 
 1. Download and install:
 
