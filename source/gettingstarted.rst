@@ -1,7 +1,11 @@
 Getting started
 =======
 
-**catcheR** is a comprehensive bioinformatic package for designing and analyzing iPS2-seq experiments. It comprises the following functions:
+**catcheR** is a comprehensive bioinformatic package for designing and analyzing iPS2-seq experiments.
+
+Find the tool at <https://github.com/alessandro-bertero/catcheR/tree/dev> and the preprint at <http://dx.doi.org/10.2139/ssrn.4854180>
+
+It comprises the following functions:
 
 1. **`catcheR_design`**  
    

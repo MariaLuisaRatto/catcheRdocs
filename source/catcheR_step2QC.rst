@@ -67,10 +67,11 @@ This step complements :ref:`SupplementalProtocolOne` – :ref:`SPOneFourB` and :
    b. Text file listing all clones above the DI threshold
 
    c. Bar chart of the number of DIs per clone above the DI threshold  
-      (see :ref:`FigureSPFourThreeA`)
+  
+  .. image:: step2QC_clone_distribution_filter_2000.png
 
    d. Frequency histogram of the percentage of clones above the DI threshold per shRNA  
-      (see :ref:`FigureSPFourThreeB`)
-      
+     
+  .. image:: step2QC_clone_percentage_filter.jpg
       
       
