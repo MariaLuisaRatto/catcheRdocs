@@ -1,6 +1,5 @@
 catcheR_10XcatchQC - Fine-Tune iPS2-10X-seq Perturbation Assignment
 ========================================================
-.. _SPFourParThree:
 
 Optionally, uou can refine shRNA assignment thresholds without re-running the full ``catcheR_10Xcatch`` analysis using:
 
@@ -13,7 +12,7 @@ Step-by-step
 ------------
 
 1. In the same working folder used previously with ``catcheR_10Xcatch``, run ``catcheR_10XcatchQC``.  
-   This will regenerate QC plots (see :ref:`FigureSPFourFour`) and suggest new thresholds.
+   This will regenerate QC plots and suggest new thresholds.
 
 .. code-block:: R
 

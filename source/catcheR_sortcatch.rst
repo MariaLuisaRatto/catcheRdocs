@@ -10,8 +10,7 @@ Steps
    
    a. Copy the annotated count matrix (e.g., ``silencing_matrix.csv``)  
    
-   b. Copy the CSV file with the list of UCI-BCs with reliable evidence of a shRNA-barcode swap (e.g., ``reliable_clones_swaps.csv``; output of step :ref:`step-SPFourStepEleven` from :ref:`subsec-SPFourThree`)  
-      .. _step-SPFourStepTwelve:
+   b. Copy the CSV file with the list of UCI-BCs with reliable evidence of a shRNA-barcode swap (e.g., ``reliable_clones_swaps.csv``; output of ``catcheR_step1QC``)  
 
 #. Run ``catcheR_sortcatch``:
 
@@ -41,7 +40,7 @@ Arguments
 - **group**: string with two options: ``sudo`` or ``docker``, depending on the user group (`info <https://docs.docker.com/engine/install/linux-postinstall/>`__)
 - **folder**: string with the working folder path
 - **expression.matrix**: string with the filename of the annotated count matrix CSV
-- **swaps**: string with the filename of the swap list CSV file (see step :ref:`step-SPFourStepTwelve`)
+- **swaps**: string with the filename of the swap list CSV file
 
 Output
 ------

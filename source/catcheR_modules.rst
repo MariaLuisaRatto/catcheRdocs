@@ -28,7 +28,9 @@ Step-by-step
    )
 
 The ``resolution`` parameter is passed to Monocle’s ``find_gene_modules`` function.  
+
 - A **higher resolution** will return **more, smaller modules**  
+
 - A **lower resolution** will return **fewer, broader modules**
 
 Outputs
@@ -37,10 +39,13 @@ Outputs
 ``catcheR_modules`` generates the following outputs:
 
 #. ``gene_modules.csv``  
+
    - Lists the genes belonging to each identified module.
 
 #. Heatmap plots  
+
    - Show Z-scores of module expression across perturbation groups.  
+   
    - Includes either **all modules** or the **top 10 most variable modules**.
    
    .. image:: pheatmap_gene_module_top10.pdf
@@ -48,10 +53,12 @@ Outputs
    .. image:: pheatmap_shRNA_module_top10.pdf
 
 #. ``modules_cells/`` folder  
+
    - Contains tables with **aggregated expression values per cell** for each gene module.  
+   
    - These CSV files can be used as input to ``catcheR_pseudotime``, allowing the analysis of cumulative frequency based on module expression rather than pseudotime.
 
-Integration with Pseudotime
+Integration with catcheR_pseudotime
 ---------------------------
 
 To analyze cumulative module expression trends, you can run ``catcheR_pseudotime`` using the CSV files in the ``modules_cells`` folder as pseudotime input.

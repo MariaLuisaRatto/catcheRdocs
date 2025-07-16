@@ -132,10 +132,15 @@ Step-by-step
    TTCTAACCACAGTCGC_180_CGTGATGC_NKX2.5_ACAGTG
 
 Where:
+
 - ``TTCTAACCACAGTCGC`` = original 10X barcode (cellID)
+
 - ``180`` = number of UMIs supporting the shRNA
+
 - ``CGTGATGC`` = shRNA barcode (BC)
+
 - ``NKX2.5`` = target gene
+
 - ``ACAGTG`` = UCI
 
-You can use this matrix directly with downstream analysis functions.
+You can use this matrix directly for downstream analysis functions.

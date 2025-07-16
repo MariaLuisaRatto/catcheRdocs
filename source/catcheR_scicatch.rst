@@ -7,7 +7,7 @@ This section describes a typical analysis pipeline similar to the one described 
 1. Prepare the working directory:
 
    a. Create a subfolder named ``fastq`` and copy all the demultiplexed ``.fastq.gz`` files 
-   (see step :ref:`step-SPFourStepSeven` of :ref:`par-SPFourParTwo`). Ensure all filenames begin with the well coordinate (e.g., ``A01``).
+   (see https://marialuisaratto.github.io/catcheRdocs/catcheR_scicounts.html). Ensure all filenames begin with the well coordinate (e.g., ``A01``).
 
    b. Copy the cell-by-gene expression matrix CSV file obtained with :func:`catcheR_scicount`  
    (see step :ref:`step-SPFourStepEight` of :ref:`par-SPFourParTwo`).
@@ -28,7 +28,7 @@ This section describes a typical analysis pipeline similar to the one described 
       GTACTCAA,CHD7.2
       TTCGTCAT,CHD7.3
 
-   d. Copy the text file ``sci-RNA-seq-8.RT.oligos`` used by :func:`catcheR_scicount` (see step :ref:`step-SPFourStepNine`).
+   d. Copy the text file ``sci-RNA-seq-8.RT.oligos`` used by :func:`catcheR_scicount`.
 
    ..
       Example:
@@ -38,7 +38,7 @@ This section describes a typical analysis pipeline similar to the one described 
       ...
 
 2. Run :func:`catcheR_scicatch` to perform a full analysis with automatic thresholding.  
-   The arguments are the same as in :func:`catcheR_10Xcatch` (see step :ref:`step-SPFourStepTen` of :ref:`subsec-SPFourSix`), except filenames are omitted — files must be present in the ``fastq`` folder.
+   The arguments are the same as in :func:`catcheR_10Xcatch`, except filenames are omitted — files must be present in the ``fastq`` folder.
 
 .. code-block:: R
 
@@ -78,7 +78,7 @@ Example usage:
 
 **Outputs**:
 
-:func:`catcheR_scicatch` produces the same key outputs as :func:`catcheR_10Xcatch` (see :ref:`step-SPFourStepTen` and :ref:`fig-FigureSPFourFour`), with the following differences:
+:func:`catcheR_scicatch` produces the same key outputs as ``catcheR_10Xcatch``, with the following differences:
 
 - ``silencing_matrix.csv`` contains modified cell names reflecting PCR well and RT barcode:
   

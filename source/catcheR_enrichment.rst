@@ -51,6 +51,7 @@ Outputs
 ``catcheR_enrichment`` produces the following:
 
 #. **Group-level plots**:  
+
    - Number of cells in each perturbation group
    
    .. image:: cellsxgene_TETvsnoTET.pdf
@@ -58,13 +59,17 @@ Outputs
    .. image:: cellsxclone_TETvsnoTET.pdf
 
 #. **Volcano plot (cell counts)**:  
-   - Enrichment or depletion of cell **numbers** in perturbation groups  
+
+   - Enrichment or depletion of cell **numbers** in perturbation groups
+   
    - Based on **log2 fold-change** and **statistical significance** (compared to control)  
+   
    - + bar plot of log2 fold-changes for visual comparison
    
    .. image:: volcano_plot_enrich_bigclones_TETvsnoTET.pdf
 
 #. **Bar plots by cluster**:  
+
    - Distribution of perturbation groups **across Monocle clusters**
    
    .. image:: clusters_in_genes_TETvsnoTET.pdf
@@ -72,7 +77,9 @@ Outputs
    .. image:: clusters_in_shRNAs_TETvsnoTET.pdf
 
 #. **Volcano plot (cluster enrichment)**:  
+
    - Results of **Fisher’s exact test** for distribution across clusters  
+   
    - Displays ``-log10(adjusted p-value)`` versus ``log2(fold change)`` compared to control
    
    .. image:: gene_volcano_fisher_stats_TETvsnoTET.pdf
@@ -80,5 +87,6 @@ Outputs
    .. image:: shRNA_volcano_fisher_stats_TETvsnoTET.pdf
 
 #. **Statistics table**:  
+
    - Includes detailed output of Fisher's test statistics
 
