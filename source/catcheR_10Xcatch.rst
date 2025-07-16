@@ -23,7 +23,9 @@ This pipeline applies to experiments using 10X-based platforms (iPS2-10X-seq, iP
 
    Cell Ranger may be required to obtain count matrices.  
    You can install it manually or use Docker containers from:
+   
    - `cellranger7hedge <https://hub.docker.com/repository/docker/hedgelab/cellranger7hedge>`_
+   
    - `cellranger9 <https://hub.docker.com/repository/docker/hedgelab/cellranger_9>`_
 
 Step-by-step

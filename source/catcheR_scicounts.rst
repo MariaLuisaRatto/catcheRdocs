@@ -8,9 +8,11 @@ catcheR_scicounts - Obtain iPS2-sci-seq Count Matrices
 2. Demultiplex Illumina base calls to FASTQ files:
 
    a. Create a ``SampleSheet.csv`` file with one row per PCR well (see :ref:`SPTwoFive` of :ref:`SupplementalProtocolTwo`).  
+      
       - Use well IDs as ``Sample_ID`` (format: ``[A-H][01-12]``)  
+      
       - Use appropriate ``index`` and ``index2`` fields for i7 and i5 barcodes  
-      - For reference, see :ref:`TableSPTwoOne`
+
 
    b. Run Illumina ``bcl2fastq`` according to Illumina documentation.
 
@@ -21,8 +23,7 @@ catcheR_scicounts - Obtain iPS2-sci-seq Count Matrices
    a. Create a subfolder called ``fastq/`` and copy all demultiplexed ``.fastq.gz`` files into it.  
       File names must start with the well coordinate (e.g. ``A01_``).
 
-   b. Create a tab-separated file called ``sci-RNA-seq-8.RT.oligos`` that maps RT well IDs to barcode sequences  
-      (refer to :ref:`TableSPTwoOne`):
+   b. Create a tab-separated file called ``sci-RNA-seq-8.RT.oligos`` that maps RT well IDs to barcode sequences:
 
    .. code-block:: text
 
@@ -68,10 +69,13 @@ catcheR_scicounts - Obtain iPS2-sci-seq Count Matrices
 
 5. **`catcheR_scicount` outputs** (saved in the ``final-output/`` folder):
 
-   - UMI per cell knee plot (see :ref:`FigureSOnePartTwo:H`)
+   - UMI per cell knee plot 
    - Summary statistics
    - Sparse cell-by-gene matrix
    - Dense expression matrices:
+   
      - ``exp_mat.csv``
+     
      - ``exp_mat_no0.csv`` (genes with zero counts removed)
+     
    - Corresponding ``.Rdata`` files

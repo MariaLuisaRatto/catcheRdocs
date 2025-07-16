@@ -1,7 +1,7 @@
 catcheR_step1QC - Pooled Cloning Step 1 QC
 =========================
 
-This step complements SupplementalProtocolOne.
+This step complements Supplemental Protocol 1.
 
 1. In a new working folder, prepare the following files:
 
@@ -78,6 +78,7 @@ This step complements SupplementalProtocolOne.
    
    .. image:: stepQC1_correct.jpg
 
-   d. *(If the ``clones`` argument is provided)*  
+   d. *(If the "clones"" argument is provided)*  
+      
       CSV files and bar charts showing the number of DIs for each shRNA matched to each clone of interest  
       (see :ref:`FigureSPFourTwo`).

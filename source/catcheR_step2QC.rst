@@ -1,7 +1,7 @@
 catcheR_step2QC - Pooled Cloning Step 2 and hiPSC Genome Editing QC
 ==================================================
 
-This step complements :ref:`SupplementalProtocolOne` – :ref:`SPOneFourB` and :ref:`SPOneSeven`.
+This step complements Supplemental Protocol 1.
 
 1. In a new working folder, prepare the following files:
 

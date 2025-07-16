@@ -1,7 +1,7 @@
 catcheR_design - Oligonucleotide Design
 ======================
 
-This step complements :ref:`SupplementalProtocolOne` - :ref:`SPOneOne`.
+This step complements Supplemental Protocol 1.
 
 1. In a new working folder, prepare the following files:
 
