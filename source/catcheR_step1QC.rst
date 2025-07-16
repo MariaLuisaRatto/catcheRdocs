@@ -73,6 +73,10 @@ This step complements SupplementalProtocolOne.
    b. Bar chart showing the number of DIs for each clone above the ``plot.threshold``.
 
    c. Bar charts showing the number of DIs associated with each barcode, shRNA, and reliable swap.
+   
+   .. image:: step1QC_name_distribution.pdf
+   
+   .. image:: stepQC1_correct.jpg
 
    d. *(If the ``clones`` argument is provided)*  
       CSV files and bar charts showing the number of DIs for each shRNA matched to each clone of interest  
